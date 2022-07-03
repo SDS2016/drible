@@ -3,7 +3,7 @@ import { Text, View, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-function HomeScreen() {
+function Local() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Home!</Text>
@@ -11,7 +11,7 @@ function HomeScreen() {
   );
 }
 
-function SettingsScreen() {
+function Activity() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Settings!</Text>
@@ -58,8 +58,8 @@ function MyTabs() {
       
     }}
     >
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Settings" component={SettingsScreen} />
+      <Tab.Screen name="Local" component={Local} />
+      <Tab.Screen name="Activity" component={Activity} />
       <Tab.Screen name="Inbox" component={Inbox} />
       <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
