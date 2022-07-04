@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, SafeAreaView, ScrollView, TextInput,Keyboard, TouchableWithoutFeedback } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView,  TextInput,Keyboard, TouchableWithoutFeedback } from 'react-native'
 
 
 
@@ -29,7 +29,8 @@ const Inbox = () => {
             <TextInput 
             placeholder='Search...'
             
-            placeholderTextColor={'white'}
+            placeholderTextColor={'#3F3F40'}
+            
             style={styles.search}
             />
         </View>
@@ -75,12 +76,12 @@ search:{
     alignItems:'center',
     justifyContent:'center',
     borderWidth:2,
-    borderColor:'#595959',
-    padding:15,
+    borderColor:'#1A1A1A',
+    padding:17,
     margin:10,
     width:'88%',
-    borderRadius:8,
-    backgroundColor:'#595959',
+    borderRadius:12,
+    backgroundColor:'#1A1A1A',
 },
 
 

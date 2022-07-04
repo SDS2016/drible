@@ -20,10 +20,6 @@ const MainNav= () => {
         height: 100,
         borderTopColor:'#121212',
         }
-        
-      
-        
-
       }}
     >
       <Tab.Screen name="Local" component={Local}  options={{headerShown:false}} />
