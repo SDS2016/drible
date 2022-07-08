@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View, SafeAreaView, ScrollView} from 'react-native'
-
+import ProfileCard from './screens/ProfileCard';
 
 const Profile = () => {
   return (
@@ -11,7 +11,7 @@ const Profile = () => {
          <Text style={{color:'white',}}>
            heloo
          </Text>
-
+       <ProfileCard/>
        </View>
        </ScrollView>
   </SafeAreaView>

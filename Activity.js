@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   title: {
     color:'white',
     paddingLeft: 20,
-    fontSize:40,
+    fontSize:45,
     fontWeight:'bold',
     fontFamily:'Helvetica Neue',
   },

@@ -1,14 +1,45 @@
-import React from 'react'
-import { StyleSheet, Text, View, ScrollView, SafeAreaView} from 'react-native'
+import React, { useRef } from "react";
+import { View, Button, Text} from "react-native";
+import RBSheet from "react-native-raw-bottom-sheet";
 
-const Local = () => {
+
+export default function Local() {
+
+  const refRBSheet = useRef();
   return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Local is </Text>
-      </View>
-    );
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#000"
+      }}
+    >
+      <Button title="OPEN BOTTOM SHEET" onPress={() => refRBSheet.current.open()} />
+      <RBSheet
+        ref={refRBSheet}
+        closeOnDragDown={true}
+        closeOnPressMask={false}
+        height={300}
+        openDuration={250}
+        customStyles={{
+          wrapper: {
+           
+            marginBottom: 100,
+            backgroundColor: "transparent"
+          },
+          draggableIcon: {
+            
+            backgroundColor: "#000"
+          },
+          
+
+        }}
+      >
+        <Text>
+          hello
+        </Text>
+      </RBSheet>
+    </View>
+  );
 }
-
-export default Local;
-
-const styles = StyleSheet.create({})

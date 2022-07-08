@@ -1,5 +1,8 @@
 import React from 'react'
-import { StyleSheet, Text, View, SafeAreaView,  TextInput,Keyboard, TouchableWithoutFeedback } from 'react-native'
+import { StyleSheet, 
+  Text, View, SafeAreaView,  
+  TextInput,Keyboard, TouchableOpacity, 
+  TouchableWithoutFeedback, Image} from 'react-native'
 
 
 
@@ -25,13 +28,18 @@ const Inbox = () => {
       </View>
 
       
-        <View>
+        <View style={styles.searchBox}> 
+        <TouchableOpacity>
+        <Image
+          style={{marginLeft:14, height:20, width:20, tintColor:'#3F3F40',}}
+          source={require('./assets/search-icon.png')}
+        />
+        </TouchableOpacity>
             <TextInput 
             placeholder='Search...'
-            
             placeholderTextColor={'#3F3F40'}
-            
             style={styles.search}
+            
             />
         </View>
         
@@ -63,26 +71,43 @@ const styles = StyleSheet.create({
 title: {
   color:'white',
   paddingLeft: 20,
-  fontSize:40,
+  fontSize:45,
   fontWeight:'bold',
   fontFamily:'Helvetica Neue',
 },
 
 search:{
+    fontSize:18,
+    color:'white',
     flex:1,
-    marginLeft:20,
-    paddingLeft:20,
+    marginLeft:2,
+    paddingLeft:13,
     flexDirection:'row',
     alignItems:'center',
     justifyContent:'center',
-    borderWidth:2,
-    borderColor:'#1A1A1A',
     padding:17,
     margin:10,
-    width:'88%',
-    borderRadius:12,
-    backgroundColor:'#1A1A1A',
+    //width:'100%',
+    
+    
+   
 },
+
+searchBox:{
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: '#fff',
+  borderWidth: 0.5,
+  borderColor: '#000',
+  height: 40,
+  borderRadius: 12,
+  margin: 10,
+  backgroundColor:'#1A1A1A',
+  borderColor:'#1A1A1A',
+  borderColor:'#1A1A1A',
+
+}
 
 
 
