@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View, SafeAreaView, ScrollView} from 'react-native'
-import ProfileCard from './screens/ProfileCard';
+import ProfileCard from './ProfileCard';
 
 const Profile = () => {
   return (

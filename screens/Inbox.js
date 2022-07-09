@@ -32,7 +32,7 @@ const Inbox = () => {
         <TouchableOpacity>
         <Image
           style={{marginLeft:14, height:20, width:20, tintColor:'#3F3F40',}}
-          source={require('./assets/search-icon.png')}
+          source={require('./../assets/search-icon.png')}
         />
         </TouchableOpacity>
             <TextInput 

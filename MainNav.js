@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Image } from "react-native";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Local from './Local';
-import Activity from './Activity';
-import Inbox from './Inbox';
-import Profile from './Profile';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Local from './screens/Local';
+import Activity from './screens/Activity';
+import Inbox from './screens/Inbox';
+import Profile from './screens/Profile';
+
 
 
 
@@ -19,12 +19,13 @@ const MainNav= () => {
       screenOptions={{
       tabBarActiveTintColor: '#FF2035',
       tabBarStyle: {
-        marginBottom:20,
+        height:100,
+        //marginBottom:10,
         position:'absolute',
         backgroundColor:'black',
         borderTopColor:'#121212',
         paddingTop:2,
-        paddingBottom:20,
+        paddingBottom:35,
       },
       }}
     >
@@ -58,7 +59,9 @@ const MainNav= () => {
       
       
       }}/>
+      
     </Tab.Navigator>
+    
   );
 }
 

@@ -7,9 +7,7 @@ import MainNav from './MainNav';
 export default function App() {
   return (
     <NavigationContainer>
-     
-       <MainNav /> 
-      
+      <MainNav /> 
     </NavigationContainer>
   );
 }
