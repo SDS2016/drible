@@ -26,7 +26,18 @@ return (
         ref={bottomSheetRef}
         index={1}
         snapPoints={snapPoints}
-        
+        handleStyle={{
+        backgroundColor:'black',
+        borderTopStartRadius:15,
+        borderTopEndRadius:15,  
+      }}
+        handleIndicatorStyle={{
+        width:70,
+        backgroundColor:'grey'
+      
+      
+      
+      }}
         //onChange={handleSheetChanges}
         
       >
@@ -57,7 +68,7 @@ const styles = StyleSheet.create({
   
   contentContainer: {
     flex: 1,
-    backgroundColor:'white',
+    backgroundColor:'black',
     alignItems: 'center',
     
   },
