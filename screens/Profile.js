@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View, SafeAreaView, ScrollView} from 'react-native'
+import { TextInput } from 'react-native-gesture-handler';
 import ProfileCard from './ProfileCard';
 
 const Profile = () => {
@@ -11,6 +12,13 @@ const Profile = () => {
          <Text style={{color:'white',}}>
            heloo
          </Text>
+          <TextInput
+          selectionColor={'white'}
+          placeholder='Search...'
+          placeholderTextColor={'#3F3F40'}
+
+          style={styles.text}
+          />
        <ProfileCard/>
        </View>
        </ScrollView>
@@ -40,7 +48,21 @@ const styles = StyleSheet.create({
     height:500,
     width:350,
     backgroundColor:'#0E0E0E',
+  },
+
+  text:{
+    fontSize:18,
+    color:'white',
+    marginLeft:2,
+    paddingLeft:13,
+    flexDirection:'row',
+    alignItems:'center',
+    justifyContent:'center',
+    padding:17,
+    margin:10,
+    backgroundColor:'black',
+    borderColor:'white',
   }
 
 
-})
+});

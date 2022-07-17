@@ -1,5 +1,6 @@
 import React from 'react'
-import { StyleSheet, Text, View, SafeAreaView} from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, ScrollView} from 'react-native'
+import ActivityNotification from '../components/activityComps/ActivityNotification';
 
 
 const Activity = () => {
@@ -17,7 +18,24 @@ const Activity = () => {
               borderBottomWidth: .4,
             }}
           />
-      </View>
+      </View><ScrollView>
+      <View style={{flex:3,}}>
+        
+        <ActivityNotification/>
+        <ActivityNotification/>
+        <ActivityNotification/>
+        <ActivityNotification/>
+        <ActivityNotification/>
+        <ActivityNotification/>
+        <ActivityNotification/>
+        <ActivityNotification/>
+        <ActivityNotification/>
+        <ActivityNotification/>
+        <ActivityNotification/>
+        <ActivityNotification/>
+        
+       </View>
+      </ScrollView>
   </SafeAreaView>
     </View>
   );
@@ -39,7 +57,6 @@ const styles = StyleSheet.create({
     fontWeight:'bold',
     fontFamily:'Helvetica Neue',
   },
-  
  
   
   
@@ -53,4 +70,4 @@ const styles = StyleSheet.create({
 
 
 
-})
+});

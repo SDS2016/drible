@@ -2,7 +2,10 @@ import React from 'react'
 import { StyleSheet, 
   Text, View, SafeAreaView,  
   TextInput,Keyboard, TouchableOpacity, 
-  TouchableWithoutFeedback, Image} from 'react-native'
+  TouchableWithoutFeedback, Image,
+  ScrollView
+} from 'react-native'
+import InboxMessageComp from '../components/inboxComps/InboxMessageComp';
 
 
 
@@ -36,6 +39,8 @@ const Inbox = () => {
         />
         </TouchableOpacity>
             <TextInput 
+            
+            selectionColor={'white'}
             placeholder='Search...'
             placeholderTextColor={'#3F3F40'}
             style={styles.search}
@@ -53,6 +58,18 @@ const Inbox = () => {
           />
           
       </SafeAreaView>
+      <ScrollView>
+      <InboxMessageComp/>
+      <InboxMessageComp/>
+      <InboxMessageComp/>
+      <InboxMessageComp/>
+      <InboxMessageComp/>
+      <InboxMessageComp/>
+      <InboxMessageComp/>
+      <InboxMessageComp/>
+      <InboxMessageComp/>
+
+      </ScrollView>
     </View>
     </TouchableWithoutFeedback>
   );

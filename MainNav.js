@@ -25,7 +25,7 @@ const MainNav= () => {
         backgroundColor:'black',
         borderTopColor:'#121212',
         paddingTop:2,
-        paddingBottom:35,
+        paddingBottom:40,
       },
       }}
     >
@@ -34,28 +34,28 @@ const MainNav= () => {
       options={{
       headerShown:false,
       tabBarIcon: ({size, color}) => 
-      (<Image style={{height:30, width:30, tintColor:color, resizeMode:'contain' }}source={require('./assets/local.png')}/>)
+      (<Image style={{height:28, width:28, tintColor:color, resizeMode:'contain' }}source={require('./assets/local.png')}/>)
       
       }}/>
       <Tab.Screen name="Activity" component={Activity} 
       options={{
       headerShown:false, 
       tabBarIcon: ({size, color}) => 
-      (<Image style={{height:30, width:30, tintColor:color, resizeMode:'contain'}}source={require('./assets/activity.png')}/>),
+      (<Image style={{height:28, width:28, tintColor:color, resizeMode:'contain'}}source={require('./assets/activity.png')}/>),
      
         }} />
       <Tab.Screen name="Inbox" component={Inbox} 
       options={{
       headerShown:false,
       tabBarIcon: ({size, color}) => 
-      (<Image style={{height:35, width:35, tintColor:color ,resizeMode:'contain'}}source={require('./assets/inbox.png')}/>),
+      (<Image style={{height:30, width:30, tintColor:color ,resizeMode:'contain'}}source={require('./assets/inbox.png')}/>),
       
       }}/>
       <Tab.Screen name="Profile" component={Profile} 
       options={{
       headerShown:false,
       tabBarIcon: ({size, color}) => 
-      (<Image style={{height:30, width:30, tintColor:color ,resizeMode:'contain'}}source={require('./assets/profile.png')}/>),
+      (<Image style={{height:28, width:28, tintColor:color ,resizeMode:'contain'}}source={require('./assets/profile.png')}/>),
       
       
       }}/>
