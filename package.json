@@ -16,6 +16,7 @@
     "@gorhom/bottom-sheet": "^4.3.2",
     "@react-navigation/bottom-tabs": "^6.3.1",
     "@react-navigation/native": "^6.0.10",
+    "@react-navigation/native-stack": "^6.9.7",
     "expo": "~45.0.0",
     "expo-app-loading": "~2.0.0",
     "expo-font": "~10.1.0",

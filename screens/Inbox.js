@@ -6,6 +6,7 @@ import { StyleSheet,
   ScrollView
 } from 'react-native'
 import InboxMessageComp from '../components/inboxComps/InboxMessageComp';
+import PencilButton from './button-etc/PencilButton';
 
 
 
@@ -68,8 +69,13 @@ const Inbox = () => {
       <InboxMessageComp/>
       <InboxMessageComp/>
       <InboxMessageComp/>
+      
 
       </ScrollView>
+      <PencilButton style={{
+        bottom:0,
+        position:"absolute",
+        }}/>
     </View>
     </TouchableWithoutFeedback>
   );
@@ -80,7 +86,7 @@ export default Inbox;
 const styles = StyleSheet.create({
   
   container:{
-  flex: 1, 
+  flex:1, 
   backgroundColor:'black',
   
 },

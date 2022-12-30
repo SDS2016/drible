@@ -2,6 +2,10 @@ import React from 'react'
 import { StyleSheet, Text, View, SafeAreaView, ScrollView} from 'react-native'
 import { TextInput } from 'react-native-gesture-handler';
 import ProfileCard from './ProfileCard';
+import TextField from './button-etc/TextField';
+import ActionButton from './button-etc/ActionButton';
+import SecondaryButton from './button-etc/SecondaryButton';
+import PencilButton from './button-etc/PencilButton';
 
 const Profile = () => {
   return (
@@ -10,17 +14,23 @@ const Profile = () => {
         <ScrollView>
        <View style={styles.box}>
          <Text style={{color:'white',}}>
-           heloo
+
          </Text>
           <TextInput
-          selectionColor={'white'}
           placeholder='Search...'
           placeholderTextColor={'#3F3F40'}
-
           style={styles.text}
           />
+
+          <TextField placeholder={"Email"}/>
+          <TextField placeholder={"Password"}/>
+          <ActionButton title= "Sign Up"/>
+          <SecondaryButton title="Login"/>
+         
+
        <ProfileCard/>
        </View>
+        <PencilButton/>
        </ScrollView>
   </SafeAreaView>
     </View>

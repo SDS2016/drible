@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Image } from "react-native";
+// import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Local from './screens/Local';
 import Activity from './screens/Activity';
@@ -10,7 +11,7 @@ import Profile from './screens/Profile';
 
 
 
-
+// const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const MainNav= () => {
@@ -30,28 +31,36 @@ const MainNav= () => {
       }}
     >
       
-      <Tab.Screen name="Local" component={Local} 
+      <Tab.Screen 
+      name="Local" 
+      component={Local} 
       options={{
       headerShown:false,
       tabBarIcon: ({size, color}) => 
       (<Image style={{height:28, width:28, tintColor:color, resizeMode:'contain' }}source={require('./assets/local.png')}/>)
       
       }}/>
-      <Tab.Screen name="Activity" component={Activity} 
+      <Tab.Screen 
+      name="Activity" 
+      component={Activity} 
       options={{
       headerShown:false, 
       tabBarIcon: ({size, color}) => 
       (<Image style={{height:28, width:28, tintColor:color, resizeMode:'contain'}}source={require('./assets/activity.png')}/>),
      
         }} />
-      <Tab.Screen name="Inbox" component={Inbox} 
+      <Tab.Screen 
+      name="Inbox" 
+      component={Inbox} 
       options={{
       headerShown:false,
       tabBarIcon: ({size, color}) => 
       (<Image style={{height:30, width:30, tintColor:color ,resizeMode:'contain'}}source={require('./assets/inbox.png')}/>),
       
       }}/>
-      <Tab.Screen name="Profile" component={Profile} 
+      <Tab.Screen 
+      name="Profile" 
+      component={Profile} 
       options={{
       headerShown:false,
       tabBarIcon: ({size, color}) => 
