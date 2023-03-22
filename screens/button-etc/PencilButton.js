@@ -1,11 +1,16 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 
-const PencilButton = () => {
+
+const PencilButton = (na) => {
+
+       
+
+
   return (
     <View style={styles.pencilContainer}>
         <TouchableOpacity activeOpacity={.8}>
-            <View style={styles.pencilImage}>
+            <View style={styles.pencilImage} >
                 <Image
                     style={styles.pencil}
                     source={require('/Users/ericfreeman/Documents/drible/assets/chatbutton.png')}

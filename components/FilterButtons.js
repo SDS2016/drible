@@ -4,11 +4,11 @@ import { StyleSheet, Text, View, TouchableOpacity, useState } from 'react-native
 
 
 
-const FilterButtons = ({name}) => {
+const FilterButtons = ({name,onPress, navigation}) => {
 
   return (
-    <TouchableOpacity>
-        <View style={styles.outer}>
+    <TouchableOpacity onPress={onPress}>
+        <View style={styles.outer} >
             <Text 
                 style={styles.inner}>{name} </Text>
         </View>

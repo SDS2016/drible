@@ -20,15 +20,16 @@ const ActivityNotification = () => {
                 </Text>
               </View>
           <View style={styles.buttonsView}>
-          <AcceptButton/>
-          <DenyButton/>
+          <AcceptButton title={"Accept"}/>
+          <DenyButton title={"Deny"}/>
           </View>
          
       </View>
       <View
               style={{
-              marginTop: 2,
+              marginTop:4,
               //width:'80%',
+              marginBottom:6,
               borderStartWidth:'100%',
               borderBottomColor: '#222222',
               borderBottomWidth: .4,
@@ -47,11 +48,13 @@ const styles = StyleSheet.create({
   
     
  top:{
+        marginTop:2,
         height:70,
         flexDirection:'row',
         backgroundColor:'black',
         marginLeft:10,
         marginRight:15,
+        //  backgroundColor:"green",
       
         
         
@@ -83,8 +86,8 @@ const styles = StyleSheet.create({
 
     img:{
       resizeMode:'cover',
-      width:60,
-      height:60,
+      width:70,
+      height:70,
       borderRadius:100,
 
     },
@@ -96,6 +99,7 @@ const styles = StyleSheet.create({
         borderWidth:3,
         justifyContent:'center',
         alignItems:'center',
+        
         
     },
 

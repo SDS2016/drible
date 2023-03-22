@@ -1,9 +1,9 @@
-import { StyleSheet, Text, View , useState} from 'react-native'
+import { StyleSheet, Text, View , useState,TextInput} from 'react-native'
 import React from 'react'
-import { TextInput } from 'react-native-gesture-handler'
 
-const TextField = ({placeholder, secureTextEntry, placeholderTextColor, value,onChangeText,autoCapitalize}) => {
-  
+
+const InputTemplate = ({placeholder,value,onChangeText }) => {
+  const [value, onChangeText] = React.useState("");
 
 
 
@@ -12,15 +12,13 @@ const TextField = ({placeholder, secureTextEntry, placeholderTextColor, value,on
     <View style={styles.button}>
       
       <TextInput
-        onChangeText={onChangeText}
+        onChangeText={text=>onChangeText(text)}
         value={value}
         placeholder={placeholder}
-        placeholderTextColor={ placeholderTextColor}
-        selectionColor={"white"}
+        placeholderTextColor={"white"}
+        selectionColor={'white'}
         style={styles.textButton}
         maxLength={20}
-        secureTextEntry={secureTextEntry}
-        autoCapitalize={autoCapitalize}
         >
       </TextInput>
     
@@ -28,7 +26,7 @@ const TextField = ({placeholder, secureTextEntry, placeholderTextColor, value,on
   )
 }
 
-export default TextField
+export default InputTemplate 
 
 const styles = StyleSheet.create({
 

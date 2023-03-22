@@ -10,15 +10,9 @@ const Activity = () => {
       <SafeAreaView>
         <View style={styles.titleBox}>
           <Text style={styles.title}>Activity</Text>
-          <View
-              style={{
-              marginTop: 10,
-              width:'100%',
-              borderBottomColor: '#222222',
-              borderBottomWidth: .4,
-            }}
-          />
-      </View><ScrollView>
+         
+      </View>
+      <ScrollView>
       <View style={{flex:3,}}>
         
         <ActivityNotification/>
@@ -56,6 +50,13 @@ const styles = StyleSheet.create({
     fontSize:45,
     fontWeight:'bold',
     fontFamily:'Helvetica Neue',
+  },
+
+  titleBox:{
+    // marginBottom:8,
+    paddingBottom:8,
+    borderBottomColor: '#222222',
+    borderBottomWidth: .4,
   },
  
   

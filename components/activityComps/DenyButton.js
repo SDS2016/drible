@@ -2,13 +2,15 @@ import React from 'react'
 import { StyleSheet, Text, View,TouchableOpacity} from 'react-native'
 
 
-const DenyButton = () => {
+const DenyButton = ({title}) => {
+
+    
   return (
  <TouchableOpacity activeOpacity={.8}>
     <View style={styles.outer}>
         <Text 
         style={styles.inner}> 
-        Deny
+        {title}
         </Text>
     </View>
 </TouchableOpacity>

@@ -1,10 +1,42 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View,ImageBackground } from 'react-native'
+
 import React from 'react'
 
-const ProfileCard = () => {
+const ProfileCard = (navigation) => {
+
+  // useEffect(() => {
+  //   navigation.getParent().setOptions({tabBarStyle: {display:'none'}})
+
+  //   return()=>{
+  //     navigation.getParent().setOptions({tabBarStyle: {display:'flex'}})
+  //   };
+  // }, [])
+
   return (
-    <View style={styles.back}>
-      <Text style={styles.profileCard}>ProfileCard</Text>
+    <View style={styles.container}>
+       <View style={styles.profilePicContainer}>    
+
+                      <ImageBackground
+                       style={{
+                        height:"100%",
+                        width:"100%",
+                        resizeMode: 'cover',
+                        borderWidth:5,
+                        borderRadius:20,
+                        borderColor:"white",
+
+                       }}
+                       source={require('/Users/ericfreeman/Documents/drible/assets/player.png')}
+                      >    
+                            <View>   
+                                    <View> 
+                                    {/* <Image/>  */}
+                                    </View>
+                            </View>
+                      </ImageBackground>
+
+                  </View>
+    
     </View>
   )
 }
@@ -12,8 +44,9 @@ const ProfileCard = () => {
 export default ProfileCard;
 
 const styles = StyleSheet.create({
-        profileCard:{
-            color:'white',
+        container:{
+           height:100,
+
         },
        
 

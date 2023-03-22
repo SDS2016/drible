@@ -1,5 +1,7 @@
-{
-  "expo": {
+
+
+export default{
+  expo:{
     "name": "drible",
     "slug": "drible",
     "version": "1.0.0",
@@ -9,7 +11,7 @@
     "splash": {
       "image": "./assets/drible-app-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffff"
+      "backgroundColor": "#000000"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -28,6 +30,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+
   }
 }
