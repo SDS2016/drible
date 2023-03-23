@@ -182,7 +182,7 @@ const Profile = ({navigation}) => {
   <TouchableOpacity onPress={()=> navigation.navigate("ProfileSettings")} >
     <Image
       style={styles.dots}
-      source={require('/Users/ericfreeman/Documents/drible/assets/three-dots.png')}
+      source={require('../assets/three-dots.png')}
     />
   </TouchableOpacity>
 </View>
@@ -239,7 +239,7 @@ const Profile = ({navigation}) => {
                                       height:30,
                                       width:30,
                                      }}
-                                     source={require('/Users/ericfreeman/Documents/drible/assets/plus.png')}
+                                     source={require('../assets/plus.png')}
                                     /> 
                                           
                               </View>

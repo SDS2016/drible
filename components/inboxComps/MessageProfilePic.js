@@ -8,7 +8,7 @@ const MessageProfilePic = () => {
     <View style={styles.profilePicContainer}>
         <Image
         style={styles.img}
-        source={require('/Users/ericfreeman/Documents/drible/assets/player.png')}
+        source={require('../../assets/player.png')}
         />
       <Text style={{fontSize:13,color:"white", fontWeight:"600",}}>Josh Durby</Text>
     </View>

@@ -16,7 +16,7 @@ const InboxMessageComp = () => {
                 <View style={styles.userTwoPic} >
                     <Image 
                         style={styles.img}
-                        source={require("/Users/ericfreeman/Documents/drible/assets/player.png")} />
+                        source={require("../../assets/player.png")} />
                 </View>
 
                 <View style={styles.messageContainer}>

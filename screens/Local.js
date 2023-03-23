@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useMemo, useState, useEffect, } from "react";
-import { StyleSheet, View, Text, Button , ScrollView, FlatList, TouchableOpacity,Image,SafeAreaView} from "react-native";
+import { StyleSheet, View, Text, Button , ScrollView, TouchableOpacity,Image,SafeAreaView} from "react-native";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 // import Map from '../components/Map';
 import MapView, {Marker} from 'react-native-maps';
@@ -8,6 +8,8 @@ import CustomMarker from "../components/localComps/CustomMarker";
 import CourtCard from "../components/localComps/CourtCard";
 import { db } from "./Firebase";
 import { collection, doc, getDocs } from "firebase/firestore";
+import { FlatList } from "react-native-gesture-handler";
+
 
 
 
@@ -67,8 +69,15 @@ const Local = ({navigation}) => {
             //   getUserLocation();
 
             // }, [locate])
-            
-            
+            const [index,setIndex]=useState(0);
+            const [refFlatList,setRefFlatList]=useState();
+          const onPress=(index)=>{
+              setIndex(index);
+              refFlatList.scrollToIndex({animated:true,index:index})
+          }  
+
+        
+        
 
 return (
 
@@ -92,14 +101,18 @@ return (
         >
           
           
-          {court.map((court)=>(
-                  <CustomMarker
-                
-                    coordinates={{     
-                       latitude: court.lat,
-                       longitude: court.long,}}
-                       image={require('/Users/ericfreeman/Documents/drible/assets/generic-ball-custom-marker.png')}
-                       />)
+          {court.map((court,index)=>{
+            return(
+              <CustomMarker
+                onPress={()=>{onPress(index)}}
+                coordinates={{     
+                   latitude: court.lat,
+                   longitude: court.long}}
+                   image={require('../assets/generic-ball-custom-marker.png')}
+                   />
+                   )
+                   
+          }
           )}
     
       {/* <TouchableOpacity
@@ -137,7 +150,7 @@ return (
         <View style={styles.localRightSideButtons} >
           <Image
             style={styles.signalImage}
-            source={require('/Users/ericfreeman/Documents/drible/assets/signal-button.png')}
+            source={require('../assets/signal-button.png')}
           />
         </View>
         </TouchableOpacity>
@@ -145,14 +158,14 @@ return (
           <View style={styles.localRightSideButtons}>
             <Image
                 style={styles.inviteFriendsImage}
-                source={require('/Users/ericfreeman/Documents/drible/assets/invite-friend-button.png')}
+                source={require('../assets/invite-friend-button.png')}
               />
           </View>
        
         <View style={styles.localRightSideButtons}>
           <Image
               style={styles.locationEyeImage}
-              source={require('/Users/ericfreeman/Documents/drible/assets/location-eye.png')}
+              source={require('../assets/location-eye.png')}
             />
         </View> 
      </View>
@@ -191,8 +204,10 @@ return (
               {/* //////////// below is the flatlist /////////// */}
               
                 <FlatList
+                ref={(ref)=>setRefFlatList(ref)}
                 data={court}
                 renderItem={({item}) => {
+                  console.log(index);
                   return(
   
                     <CourtCard
@@ -204,6 +219,7 @@ return (
                     close={item.close}
                     height={item.height}
                     />
+                
   
                  )
                 }}
@@ -214,7 +230,7 @@ return (
                 decelerationRate={"fast"}
                 style={{height:"100%", width:"100%",}}
               />
-                
+             
             </View>
         </BottomSheet>
      </View>

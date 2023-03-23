@@ -44,7 +44,7 @@ const CourtCard = ( {...props}) => {
                             
                             <Image 
                             style={styles.rimImage}
-                            source={require('/Users/ericfreeman/Documents/drible/assets/rim.png')}
+                            source={require('../../assets/rim.png')}
                             
                             />
                              <View>
@@ -55,7 +55,7 @@ const CourtCard = ( {...props}) => {
                         <View style={styles.iconImageContainer}>
                             <Image 
                             style={styles.surfaceImage}
-                            source={require('/Users/ericfreeman/Documents/drible/assets/surface.png')}
+                            source={require('../../assets/surface.png')}
                             
                             />
                             <View>
@@ -66,7 +66,7 @@ const CourtCard = ( {...props}) => {
                         <View style={styles.iconImageContainer}>
                             <Image 
                             style={styles.lightImage}
-                            source={require('/Users/ericfreeman/Documents/drible/assets/light.png')}
+                            source={require('../../assets/light.png')}
                             
                             />
                             <View>
@@ -79,7 +79,7 @@ const CourtCard = ( {...props}) => {
                                 <Text style={{justifyContent:"center",alignSelf:"center", fontSize:20, fontWeight:"600",color:"white",marginRight:3,}}>{height}</Text>
                                 <Image 
                                     style={{height:25, width:10,}}
-                                    source={require('/Users/ericfreeman/Documents/drible/assets/rim-height.png')}
+                                    source={require('../../assets/rim-height.png')}
                                     
                                     />
                             </View>

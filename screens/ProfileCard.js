@@ -26,7 +26,7 @@ const ProfileCard = (navigation) => {
                         borderColor:"white",
 
                        }}
-                       source={require('/Users/ericfreeman/Documents/drible/assets/player.png')}
+                       source={require('../assets/player.png')}
                       >    
                             <View>   
                                     <View> 

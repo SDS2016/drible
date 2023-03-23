@@ -12,7 +12,7 @@ const BackButton = ({onPress}) => {
             marginLeft:5,
             // resizeMode:"contain",
         }}
-        source={require('/Users/ericfreeman/Documents/drible/assets/white-back-button.png')}
+        source={require('../../assets/white-back-button.png')}
         />
         </View>
     </TouchableOpacity>

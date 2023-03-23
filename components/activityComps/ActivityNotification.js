@@ -12,7 +12,7 @@ const ActivityNotification = () => {
       <View style={styles.userTwoPic} >
       <Image 
         style={styles.img}
-        source={require("/Users/ericfreeman/Documents/drible/assets/player.png")} />
+        source={require("../../assets/player.png")} />
       </View>
               <View style={styles.wordsContainer}>
                 <Text style={{color:'white',fontSize:14, marginLeft:2,fontWeight:'600',}}> Josh Durby</Text>

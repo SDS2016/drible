@@ -13,7 +13,7 @@ const PencilButton = (na) => {
             <View style={styles.pencilImage} >
                 <Image
                     style={styles.pencil}
-                    source={require('/Users/ericfreeman/Documents/drible/assets/chatbutton.png')}
+                    source={require('../../assets/chatbutton.png')}
                 />
             </View>
         </TouchableOpacity>

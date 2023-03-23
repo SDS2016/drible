@@ -18,7 +18,7 @@ const OtherSettingsCategories = ({title}) => {
                 <View style={styles.arrowContainer}>
                 <Image
                 style={styles.img}
-                source={require('/Users/ericfreeman/Documents/drible/assets/rightArrow.png')}
+                source={require('../../assets/rightArrow.png')}
                 />
                 </View>
         </View>

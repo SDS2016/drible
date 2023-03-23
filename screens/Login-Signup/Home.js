@@ -29,7 +29,7 @@ const Home = ({navigation}) => {
             <View style={{ alignItems:'center'}}>
                 <Image
                 style={styles.wordLogo}
-                source={require('/Users/ericfreeman/Documents/drible/assets/app-logo.png')}
+                source={require('../../assets/app-logo.png')}
                 />
                 </View >
 

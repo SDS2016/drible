@@ -52,7 +52,7 @@ const [password,setPassword] = useState("");
           <View style={{justifyContent:'center', alignItems:'center',}}>
                 <Image
                 style={styles.wordLogo}
-                source={require('/Users/ericfreeman/Documents/drible/assets/word-logo-app.png')}
+                source={require('../../assets/word-logo-app.png')}
                 />
           </View>
 
