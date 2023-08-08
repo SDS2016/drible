@@ -3,7 +3,8 @@ import { StyleSheet, Text, View, useState,TextInput , TouchableOpacity,Touchable
 import ProgressBar from './ProgressBar'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { collection, addDoc, } from "firebase/firestore";
+import { getAuth } from 'firebase/auth'
+import { collection, addDoc, doc, } from "firebase/firestore";
 import { db } from '../Firebase';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -28,10 +29,13 @@ const FirstLastNameSchema = Yup.object().shape({
 
  const SignUp1 = ({navigation}) => {
 
- 
+
 
 ///////    create a user/ user is added to the user collection   ////////// 
 const handleSubmit = async (values)=> {
+    // const docRef = doc(db,'users')
+    // const theRef = user.uid;
+     
     const usersCollectionRef = collection(db,'users');
     await addDoc(usersCollectionRef,
       {
@@ -39,15 +43,23 @@ const handleSubmit = async (values)=> {
         lastName: values.lastName,
         userName: '',
         
+       
+        
+        
         
       }).catch((error) => {
-        alert(error.message);
-      });
-      navigation.navigate("SignUp2");
+        alert(error);
+    });
+
+    
+      navigation.navigate("SignUp3");
 
 }
 
-
+// .then(async()=>{
+//   await setDoc(docRef,{id:doc.id},{merge:true});
+//   alert(error);
+// }
 
 // navigation.navigate("SignUp2")
 
@@ -84,7 +96,7 @@ Keyboard.dismiss(); }}>
                           <TextInput
                             onChangeText={handleChange('firstName')}
                             value={values.firstName}
-                            onBlur={()=> setFieldTouched('userName')}
+                            onBlur={()=> setFieldTouched('firstName')}
                             autoCapitalize={false}
                             // // placeholder={placeholder}
                             // placeholderTextColor={"white"}
@@ -99,7 +111,7 @@ Keyboard.dismiss(); }}>
                           <TextInput
                             onChangeText={handleChange('lastName')}
                             value={values.lastName}
-                            onBlur={()=> setFieldTouched('userName')}
+                            onBlur={()=> setFieldTouched('lastName')}
                             autoCapitalize={false}
                             // placeholder={placeholder}
                             // placeholderTextColor={"white"}

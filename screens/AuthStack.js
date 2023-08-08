@@ -8,6 +8,8 @@ import Login from './login/Login';
 import SignUp1 from './SignUp/SignUp1';
 import SignUp2 from './SignUp/SignUp2';
 import SignUp3 from './SignUp/SignUp3';
+import NewSignUp2 from './SignUp/NewSignUp2';
+import NewSignUp3 from './SignUp/NewSignUp3';
 
 
 const Stack = createNativeStackNavigator(); 
@@ -39,7 +41,7 @@ const AuthStack = () => {
       <Stack.Screen options={{headerShown:false}} name="Home" component={Home} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="SignUp1"  component={SignUp1} />
-      <Stack.Screen name="SignUp2"  component={SignUp2} />
+      <Stack.Screen name="NewSignUp2"  component={NewSignUp2} />
       <Stack.Screen name="SignUp3"  component={SignUp3} />
     </Stack.Navigator>
     

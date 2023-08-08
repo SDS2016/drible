@@ -2,8 +2,10 @@ import React  from 'react'
 
 import { StyleSheet,useState , Image, Text, View, SafeAreaView, ScrollView, TouchableOpacity, ImageBackground,} from 'react-native'
 import * as ImagePicker from 'expo-image-picker';
-import {  storageRef, storage, getStorage, ref,  uploadBytes, getDownloadURL, uploadString, getMetadata,} from "firebase/storage";
-import {v4} from "uuid";
+import {  getStorage, ref,  uploadBytes, getDownloadURL } from "firebase/storage";
+// import {v4} from "uuid";
+import 'react-native-get-random-values';
+import { v4 as uuidv4 } from 'uuid';
 // import { storage } from './Firebase';
 import { TextInput } from 'react-native-gesture-handler';
 import ProfileCard from './ProfileCard';
@@ -12,7 +14,8 @@ import ActionButton from './button-etc/ActionButton';
 import SecondaryButton from './button-etc/SecondaryButton';
 import PencilButton from './button-etc/PencilButton';
 import { useEffect } from 'react'
-import { async } from '@firebase/util';
+import { useRef } from 'react';
+
 
 
 
@@ -21,18 +24,10 @@ import { async } from '@firebase/util';
 const Profile = ({navigation}) => {
 
 
-  // useEffect(() => {
-  //     navigation.setOptions({tabBarStyle: {display:'none'}});
-  
-  //     // return()=>{
-  //     //   navigation.getParent().setOptions({tabBarStyle: {display:'flex'}})
-  //     // };
-  //   }, [])
+
+  const [image, setImage] = React.useState('https://firebasestorage.googleapis.com/v0/b/drible-app.appspot.com/o/profile-image.png?alt=media&token=8d103c17-56ff-4824-8820-17e79a2fa2c7');
 
 
-  const [image, setImage] = React.useState(null);
-
-  // const storage = getStorage(); 
   
 
   const pickImage = async () => {
@@ -45,147 +40,70 @@ const Profile = ({navigation}) => {
       
     });
 
-    // console.log(result);
-
-    
-    
+    console.log(result);
     // //// the cancelled in result.canceled will is deprecated look up what to use to replace cancelled keyword /////
     if (!result.canceled) {
-      setImage(result.assets[0].uri);
+      const uploadUrl = await uploadImageAsync(result.assets[0].uri);
+      setImage(uploadUrl);
+    } 
+     };
       
+    
+    // if (image == null) return;
       
+      // make a function to update the the user doc, use the uploadUrl which is the downloadUrl which should be saved to the user doc ///
+      // map the users collection by id then set it in the source for the background image //
+    
+    
+    
+      const uploadImageAsync = async (uri) => {
+            // Why are we using XMLHttpRequest? See:
+            // https://github.com/expo/expo/issues/2402#issuecomment-443726662
+            const storage = getStorage();
+            const blob = await new Promise((resolve, reject) => {
+              const xhr = new XMLHttpRequest();
+              xhr.onload = function () {
+                resolve(xhr.response);
+              };
+              xhr.onerror = function (e) {
+                console.log(e);
+                reject(new TypeError("Network request failed"));
+              };
+              xhr.responseType = "blob";
+              xhr.open("GET", uri, true);
+              xhr.send(null);
+            });
 
-      if (image == null) return;
-      const storage = getStorage();
-      // // // const IMG = 'IMG';
-      // // // const oldName = IMG.concat(v4().toUpperCase() + image.toUpperCase());
-      // // // const fileName = oldName.sub string(oldName.lastIndexOf('/')+1);
-     
-      // // const newFilename = `IMG`+ v4() + image;
-      // const latestFileName = getPictureBlob(image);
-      const storageRef = ref(storage,`profiles/images/IMG_${ v4().toUpperCase()}`);
-      
-       uploadBytes(storageRef,image).then((snapshot) => {
-            alert('image uploaded');
-            console.log(image);
-            
-          });
+      try {
+        const storageRef = ref(storage,`users/profile-pictures/IMG_${uuidv4().toUpperCase()}`);
+        const result = await uploadBytes(storageRef,blob);
 
-      //  try {
-      //     const storage = getStorage();
-      //     const response = await fetch(result.assets[0].uri);
-      //     const newFilename = response.blob();
-      
-      //     const reference = ref(storage, `profiles/images`)
-      //     const result = await uploadBytes(reference, newFilename)
-      //     const url = await getDownloadURL(result.ref)
-      //     alert('image uploaded')
-      //     console.log(image)
-      //     return url
-      //   } catch (err) {
-      //     return Promise.reject(err)
-          
-      // }
-
-
+        blob.close();
+        return await getDownloadURL(storageRef);
+      } catch (error){
+        alert(`Error:${error}`) 
+      }
     }
 
+    // create a function that saves the download url to the users profile img in their document
 
-    const getPictureBlob = (image) => {
-      // https://github.com/expo/expo/issues/2402#issuecomment-443726662
-      return new Promise((resolve, reject) => {
-        const xhr = new XMLHttpRequest();
-        xhr.onload = function () {
-          resolve(xhr.response);
-        };
-        xhr.onerror = function (e) {
-          console.log(e);
-          reject(new TypeError('Network request failed'));
-        };
-        xhr.responseType = 'blob';
-        xhr.open('GET', image, true);
-        xhr.send(null);
-      });
-    };
-
-
-
-
-
-    // const handleUpload = async () => {
-    //   let blob;
-    //   try {
-    //     blob = await getPictureBlob(image);
-    
-    //     const ref = await storage.ref().child(v4());
-    //     const snapshot = await ref.put(blob);
-    
-    //     return await snapshot.ref.getDownloadURL();
-    //   } catch (e) {
-    //     alert(e.message);
-    //   } finally {
-    //     blob.close();
-       
-    //   }
-
-    // }
-
-    
-       
-
-
-  //   }
-  //   uploadImage();
-    // //////////////////////////////////////////
-  
-//   const storage = getStorage();
-//   // const storageRef = ref(storage, `users/profile-photos/`);
-
-//   const storageRef = ref(storage, `users/profile-photos/${image+ v4()}`);
-// //  const filename = {result.uri};
-    
-      
-//       // const filename = image.substring(image.lastIndexof('/')+1);
-//       // const imagUri = storage().ref(filename).putFile(image);
-//       // const ref = firebase.storage().ref().child(filename).put(blob);
-
-//   uploadBytes(storageRef,image).then((Snapshot) => {
-//     alert('image uploaded');
-//     console.log(image);
-//   });
-
-  // const storage = getStorage();
-  };
-
-
-  
-
-  // ////////////////// upload image to cloud storage ///////////////////
-
-// useEffect(() => {
- 
-// }, [image])
-
-
-  
-
-
-
-
-
+    //  then create a useEffect that gets the img asynchronously
+    // const storage = getStorage();
+    // const storageRef = ref(storage,`users/profile-pictures/IMG_${uuidv4().toUpperCase()}`);
+    // const imgLink = getDownloadURL(storageRef);
   
   return (
 
     <View style={styles.container}>
       <SafeAreaView>
-<View style={styles.dotContainer}>
-  <TouchableOpacity onPress={()=> navigation.navigate("ProfileSettings")} >
-    <Image
-      style={styles.dots}
-      source={require('/Users/ericfreeman/Documents/drible/assets/three-dots.png')}
-    />
-  </TouchableOpacity>
-</View>
+    <View style={styles.dotContainer}>
+      <TouchableOpacity onPress={()=> navigation.navigate("ProfileSettings")} >
+        <Image
+          style={styles.dots}
+          source={require('/Users/ericfreeman/Documents/drible/assets/three-dots.png')}
+        />
+      </TouchableOpacity>
+    </View>
         
             <ScrollView >
                 
@@ -220,7 +138,7 @@ const Profile = ({navigation}) => {
                         >   
 
 
-{/* ///////////////////////// create a function that hide the upload image button if the user doesn't match current.User */}
+ {/* ///////////////////////// create a function that hide the upload image button if the user doesn't match current.User */}
                         <TouchableOpacity activeOpacity={.7}  onPress={pickImage}>
                               <View 
                                     style={{
@@ -263,7 +181,7 @@ const Profile = ({navigation}) => {
 
 
 
-{/* ///////////////////// profile bio ///////////////////////////// */}
+ {/* ///////////////////// profile bio ///////////////////////////// */}
                         <View
                           style={{
                             minHeight:40,
@@ -294,9 +212,10 @@ const Profile = ({navigation}) => {
   </SafeAreaView>
   
     </View>
-  );
+);
 }
 
+                          
 export default Profile;
 
 const styles = StyleSheet.create({

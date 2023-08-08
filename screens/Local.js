@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useMemo, useState, useEffect, } from "react";
-import { StyleSheet, View, Text, Button , ScrollView, FlatList, TouchableOpacity,Image,SafeAreaView} from "react-native";
+import { StyleSheet, View, Text, Button , ScrollView, TouchableOpacity,Image,SafeAreaView} from "react-native";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 // import Map from '../components/Map';
 import MapView, {Marker} from 'react-native-maps';
@@ -7,11 +7,13 @@ import * as Haptics from 'expo-haptics';
 import CustomMarker from "../components/localComps/CustomMarker";
 import CourtCard from "../components/localComps/CourtCard";
 import { db } from "./Firebase";
-import { collection, doc, getDocs } from "firebase/firestore";
+import { collection, doc, documentId, getDocs } from "firebase/firestore";
+import { FlatList } from "react-native-gesture-handler";
 
 
 
-const hapticTouch = ()=> {Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy)}
+
+const hapticTouch = ()=> {Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy),alert('sent')}
 
 
 ////////// imports for the firebase data ///////////////////////
@@ -36,6 +38,7 @@ const Local = ({navigation}) => {
   ////////////////////^^^^^^^^^^^^^^^ useState for Map ^^^^^^^^^^^^^^^^^^ /////////////////////
 
   const bottomSheetRef = useRef(null);
+  
 
   // variables
   const snapPoints = useMemo(() => ['15%', '48%'], []);
@@ -45,12 +48,12 @@ const Local = ({navigation}) => {
   //  console.log('handleSheetChanges', index);
 
             const [court,setCourt] =useState([]);
-            const courtsCollectionRef = collection(db,'courts');
+            const courtsCollectionRef = collection(db,'courts',);
 
             useEffect(() => {
                 const getCourts = async () => {
                 const data = await getDocs(courtsCollectionRef);
-                setCourt(data.docs.map((doc)=>({...doc.data(), id: doc.id })))
+              setCourt(data.docs.map((doc)=>({...doc.data(), id:doc.id})))
 
                 }
                 getCourts()
@@ -67,8 +70,16 @@ const Local = ({navigation}) => {
             //   getUserLocation();
 
             // }, [locate])
-            
-            
+            // const [index,setIndex]=useState(0);
+            // const [refFlatList,setRefFlatList]=useState();
+          
+            // const onPress=(index)=>{
+            //   setIndex(index);
+            //   refFlatList.scrollToIndex({animated:true,index:index})
+            //   }  
+
+        
+        
 
 return (
 
@@ -92,15 +103,29 @@ return (
         >
           
           
-          {court.map((court)=>(
-                  <CustomMarker
-                
-                    coordinates={{     
-                       latitude: court.lat,
-                       longitude: court.long,}}
-                       image={require('/Users/ericfreeman/Documents/drible/assets/generic-ball-custom-marker.png')}
-                       />)
+          {court.map((court)=>{
+            return(
+              <CustomMarker
+                // onPress={()=>{onPress(_id)}}
+              keys={court.id}
+                coordinates={{     
+                   latitude: court.lat,
+                   longitude: court.long}}
+                   image={require('../assets/generic-ball-custom-marker.png')}
+                   />
+                   )
+                   
+          }
           )}
+
+
+          {/* {court.map((court)=>{
+            return(
+              
+                   )
+                   
+          }
+          )} */}
     
       {/* <TouchableOpacity
       activeOpacity={.9}
@@ -137,22 +162,25 @@ return (
         <View style={styles.localRightSideButtons} >
           <Image
             style={styles.signalImage}
-            source={require('/Users/ericfreeman/Documents/drible/assets/signal-button.png')}
+            source={require('../assets/signal-button.png')}
           />
         </View>
         </TouchableOpacity>
         
+
+        <TouchableOpacity activeOpacity={.6} onPress={()=>navigation.navigate('FriendsListInvite',Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy))}>
           <View style={styles.localRightSideButtons}>
             <Image
                 style={styles.inviteFriendsImage}
-                source={require('/Users/ericfreeman/Documents/drible/assets/invite-friend-button.png')}
+                source={require('../assets/invite-friend-button.png')}
               />
           </View>
-       
+       </TouchableOpacity >
+
         <View style={styles.localRightSideButtons}>
           <Image
               style={styles.locationEyeImage}
-              source={require('/Users/ericfreeman/Documents/drible/assets/location-eye.png')}
+              source={require('../assets/location-eye.png')}
             />
         </View> 
      </View>
@@ -191,8 +219,11 @@ return (
               {/* //////////// below is the flatlist /////////// */}
               
                 <FlatList
+                
                 data={court}
                 renderItem={({item}) => {
+                  // console.log(index);
+                  
                   return(
   
                     <CourtCard
@@ -204,17 +235,18 @@ return (
                     close={item.close}
                     height={item.height}
                     />
+                
   
                  )
                 }}
-                keyExtractor={(item)=>item.id}
+                keyExtractor={(item)=>item.id} 
                 horizontal={true}
                 pagingEnabled={true}
                 snapToAlignment={"center"}
                 decelerationRate={"fast"}
                 style={{height:"100%", width:"100%",}}
               />
-                
+             
             </View>
         </BottomSheet>
      </View>
@@ -317,5 +349,4 @@ const styles = StyleSheet.create({
   },
   
  })
-
 

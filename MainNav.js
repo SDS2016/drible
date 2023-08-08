@@ -10,6 +10,7 @@ import Profile from './screens/Profile';
 
 import CourtCardsScreen from './components/localComps/CourtCardsScreen';
 import ProfileSettings from './components/profileComps/ProfileSettings';
+import FriendsListInvite from './components/localComps/FriendsListInvite';
 
 
 
@@ -172,7 +173,20 @@ function InboxStack() {
 
         // }}
         />
+         <Stack.Screen
+
+          name="FriendsListInvite"
+          component={FriendsListInvite}
+          options={{
+            headerShown:false,
+            presentation:"modal",
+             
+          }}
+          />
     </Stack.Navigator>
+
+    
+    
   );
 }
 
@@ -185,7 +199,7 @@ function ProfileStack({}) {
       // initialRouteName="Home"
        >
         <Stack.Screen
-        id={'Profile'}
+        
         name="ProfileStack"
         component={Profile}
         options={{  headerShown:false }}
@@ -285,7 +299,6 @@ const MainNav= () => {
 
 
   return (
-    
     <InboxStack/>
   );
 }

@@ -4,13 +4,17 @@ import React from 'react'
 
 const CustomMarker = (props) => {
 
-const {coordinates} = props;
+const {coordinates,keys} = props;
 
   return (
+    <React.Fragment
+     key={keys}
+    >
     <Marker
           coordinate={coordinates}
           image={require('/Users/ericfreeman/Documents/drible/assets/generic-ball-custom-marker.png')}
           />
+    </React.Fragment>
           
   );
 };

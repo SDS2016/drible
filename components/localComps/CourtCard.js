@@ -14,7 +14,8 @@ const CourtCard = ( {...props}) => {
             close,
             light,
             surface,
-            height,} = props
+            height,
+            } = props
 
             const navigation = useNavigation();
 

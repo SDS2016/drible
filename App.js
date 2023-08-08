@@ -8,6 +8,7 @@ import SignUp2 from './screens/SignUp/SignUp3';
 import ChatScreen from './components/inboxComps/ChatScreen';
 import Login from './screens/login/Login';
 import Home from './screens/Login-Signup/Home';
+import NewSignUp2 from './screens/SignUp/NewSignUp2';
 import CourtCardsScreen from './components/localComps/CourtCardsScreen';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import AuthStack from './screens/AuthStack';
